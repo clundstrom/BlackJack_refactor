@@ -1,6 +1,8 @@
-package BlackJack.view;
+package view;
 
-public class SwedishView implements IView 
+import model.Card;
+
+public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
         {
@@ -26,9 +28,9 @@ public class SwedishView implements IView
           }
         }
         
-        public void DisplayCard(BlackJack.model.Card a_card)
+        public void DisplayCard(Card a_card)
         {
-            if (a_card.GetColor() == BlackJack.model.Card.Color.Hidden)
+            if (a_card.GetColor() == Card.Color.Hidden)
             {
                 System.out.println("Dolt Kort");
             }
@@ -41,11 +43,11 @@ public class SwedishView implements IView
                 System.out.println("" + colors[a_card.GetColor().ordinal()] + " " + values[a_card.GetValue().ordinal()]);
             }
         }
-        public void DisplayPlayerHand(Iterable<BlackJack.model.Card> a_hand, int a_score)
+        public void DisplayPlayerHand(Iterable<Card> a_hand, int a_score)
         {
             DisplayHand("Spelare", a_hand, a_score);
         }
-        public void DisplayDealerHand(Iterable<BlackJack.model.Card> a_hand, int a_score)
+        public void DisplayDealerHand(Iterable<Card> a_hand, int a_score)
         {
             DisplayHand("Croupier", a_hand, a_score);
         }
@@ -62,10 +64,10 @@ public class SwedishView implements IView
             }
         }
 
-        private void DisplayHand(String a_name, Iterable<BlackJack.model.Card> a_hand, int a_score)
+        private void DisplayHand(String a_name, Iterable<Card> a_hand, int a_score)
         {
             System.out.println(a_name + " Har: " + a_score);
-            for(BlackJack.model.Card c : a_hand)
+            for(Card c : a_hand)
             {
                 DisplayCard(c);
             }

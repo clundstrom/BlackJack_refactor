@@ -1,4 +1,6 @@
-package BlackJack.model;
+package model;
+
+import model.rules.RulesFactory;
 
 public class Game {
 
@@ -7,7 +9,7 @@ public class Game {
 
   public Game()
   {
-    m_dealer = new Dealer(new BlackJack.model.rules.RulesFactory());
+    m_dealer = new Dealer(new RulesFactory());
     m_player = new Player();
   }
     

@@ -1,6 +1,8 @@
-package BlackJack.view;
+package view;
 
-public class SimpleView implements IView 
+import model.Card;
+
+public class SimpleView implements IView
 {
 
   public void DisplayWelcomeMessage()
@@ -24,25 +26,25 @@ public class SimpleView implements IView
           }
         }
 
-        public void DisplayCard(BlackJack.model.Card a_card)
+        public void DisplayCard(Card a_card)
         {
             System.out.println("" + a_card.GetValue() + " of " + a_card.GetColor());
         }
 
-        public void DisplayPlayerHand(Iterable<BlackJack.model.Card> a_hand, int a_score)
+        public void DisplayPlayerHand(Iterable<Card> a_hand, int a_score)
         {
             DisplayHand("Player", a_hand, a_score);
         }
 
-        public void DisplayDealerHand(Iterable<BlackJack.model.Card> a_hand, int a_score)
+        public void DisplayDealerHand(Iterable<Card> a_hand, int a_score)
         {
             DisplayHand("Dealer", a_hand, a_score);
         }
 
-        private void DisplayHand(String a_name, Iterable<BlackJack.model.Card> a_hand, int a_score)
+        private void DisplayHand(String a_name, Iterable<Card> a_hand, int a_score)
         {
             System.out.println(a_name + " Has: ");
-            for(BlackJack.model.Card c : a_hand)
+            for(Card c : a_hand)
             {
                 DisplayCard(c);
             }

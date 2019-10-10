@@ -1,8 +1,6 @@
-package BlackJack;
-
-import BlackJack.model.Game;
-import BlackJack.view.*;
-import BlackJack.controller.*;
+import controller.PlayGame;
+import model.Game;
+import view.*;
 
 public class Program
 {
