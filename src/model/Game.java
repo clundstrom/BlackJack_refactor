@@ -36,7 +36,10 @@ public class Game {
   
   public boolean Stand()
   {
-    // TODO: Implement this according to Game_Stand.sequencediagram
+    // Dealer show hidden
+
+
+
     return true;
   }
   
