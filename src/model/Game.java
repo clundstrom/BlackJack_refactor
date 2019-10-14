@@ -33,14 +33,12 @@ public class Game {
   {
     return m_dealer.Hit(m_player);
   }
-  
+
+
   public boolean Stand()
   {
-    // Dealer show hidden
-
-
-
-    return true;
+    //m_dealer.ShowHand();
+   return m_dealer.Stand();
   }
   
   public Iterable<Card> GetDealerHand()
