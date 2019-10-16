@@ -59,7 +59,10 @@ public class Dealer extends Player {
   }
 
   public boolean IsDealerWinner(Player a_player) {
+    if(a_player.CalcScore() <= g_maxScore)
       return m_ruleIfEqual.winnerIfEqual(a_player, this);
+    else
+      return true;
   }
 
   public boolean IsGameOver() {
