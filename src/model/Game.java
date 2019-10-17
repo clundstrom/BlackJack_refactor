@@ -1,5 +1,7 @@
 package model;
 
+import controller.GameEventController;
+import model.rules.Role;
 import model.rules.RulesFactory;
 
 public class Game {
@@ -31,13 +33,14 @@ public class Game {
   
   public boolean Hit()
   {
-    return m_dealer.Hit(m_player);
+    if (m_dealer.Hit(m_player)){
+      return true;
+    }
+    return false;
   }
 
 
-  public boolean Stand()
-  {
-    //m_dealer.ShowHand();
+  public boolean Stand() {
    return m_dealer.Stand();
   }
   
@@ -60,6 +63,5 @@ public class Game {
   {
     return m_player.CalcScore();
   }
-    
-  
+
 }

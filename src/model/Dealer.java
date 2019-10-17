@@ -1,5 +1,6 @@
 package model;
 
+import controller.GameEventController;
 import model.rules.*;
 
 public class Dealer extends Player {
@@ -14,11 +15,6 @@ public class Dealer extends Player {
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
     m_ruleIfEqual = a_rulesFactory.GetIfEqualRule();
-    
-    /*for(Card c : m_deck.GetCards()) {
-      c.Show(true);
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }    */
   }
   
   
@@ -38,7 +34,7 @@ public class Dealer extends Player {
       c = m_deck.GetCard();
       c.Show(true);
       a_player.DealCard(c);
-      
+      GameEventController.notifyCardDealt(Role.Player);
       return true;
     }
     return false;
@@ -47,11 +43,12 @@ public class Dealer extends Player {
   public boolean Stand() {
     if(m_deck != null) {
       ShowHand();
-      while (m_hitRule.DoHit(this)) {
+      while (m_hitRule.DoHit(this)) { // while strategy allows, deal card.
         Card c;
         c = m_deck.GetCard();
         c.Show(true);
         this.DealCard(c);
+        GameEventController.notifyCardDealt(Role.Dealer);
       }
       return true;
     }
@@ -68,5 +65,4 @@ public class Dealer extends Player {
     }
     return false;
   }
-  
 }

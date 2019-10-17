@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.List;
 import java.util.LinkedList;
 
@@ -8,16 +9,16 @@ public class Player {
   private List<Card> m_hand;
   protected final int g_maxScore = 21;
 
+
   public Player()
   {
-  
     m_hand = new LinkedList<Card>();
-    System.out.println("Hello List World");
   }
+
   
   public void DealCard(Card a_addToHand)
   {
-    m_hand.add(a_addToHand);
+      m_hand.add(a_addToHand);
   }
   
   public Iterable<Card> GetHand()
@@ -40,9 +41,6 @@ public class Player {
   
   public int CalcScore()
   {
-    // the number of scores is dependant on the number of scorable values
-    // as it seems there is no way to do this check at compile time in java ?!
-    // cardScores[13] = {...};
     int cardScores[] = {
         2, 3, 4, 5, 6, 7, 8, 9, 10, 10 ,10 ,10, 11
     };
@@ -68,7 +66,6 @@ public class Player {
             }
         }
     }
-
     return score;
   }
 }

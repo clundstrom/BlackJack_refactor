@@ -1,6 +1,7 @@
 package view;
 
 import model.Card;
+import model.Player;
 
 public class SwedishView extends BaseView {
 
@@ -54,5 +55,14 @@ public class SwedishView extends BaseView {
         }
         System.out.println("Poäng: " + a_score);
         System.out.println("");
+    }
+
+    @Override
+    public void onPlayerCardDealt(){
+        System.out.println("Spelaren fick ett kort.");
+    }
+    @Override
+    public void onDealerCardDealt(){
+        System.out.println("Croupiern fick ett kort.");
     }
 }

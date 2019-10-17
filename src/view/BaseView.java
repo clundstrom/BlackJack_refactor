@@ -1,5 +1,7 @@
 package view;
 
+import model.Player;
+
 public abstract class BaseView implements IView {
 
     protected char play = 'p';

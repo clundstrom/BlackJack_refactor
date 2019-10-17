@@ -1,6 +1,7 @@
 package view;
 
 import model.Card;
+import model.Player;
 
 public interface IView
 {
@@ -10,6 +11,10 @@ public interface IView
   void DisplayPlayerHand(Iterable<Card> a_hand, int a_score);
   void DisplayDealerHand(Iterable<Card> a_hand, int a_score);
   void DisplayGameOver(boolean a_dealerIsWinner);
+  void onDealerCardDealt();
+  void onPlayerCardDealt();
+
+
   boolean WantsToPlay(int input);
   boolean WantsAHit(int input);
   boolean WantsToStand(int input);
