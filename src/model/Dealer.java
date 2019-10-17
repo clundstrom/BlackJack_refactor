@@ -59,10 +59,14 @@ public class Dealer extends Player {
   }
 
   public boolean IsDealerWinner(Player a_player) {
-    if(a_player.CalcScore() <= g_maxScore)
-      return m_ruleIfEqual.winnerIfEqual(a_player, this);
-    else
+    if (a_player.CalcScore() > g_maxScore) // Tobbes Code
       return true;
+    else if (CalcScore() > g_maxScore)  // Tobbes code
+      return false;
+    else if(m_ruleIfEqual.winnerIfEqual(a_player, this)) // My Code
+      return true;
+
+    return CalcScore() >= a_player.CalcScore(); // Tobbes Code
   }
 
   public boolean IsGameOver() {

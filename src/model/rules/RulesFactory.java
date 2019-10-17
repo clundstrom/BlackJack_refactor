@@ -5,7 +5,7 @@ public class RulesFactory {
   public IHitStrategy GetHitRule() { return new SoftSeventeenStategy();
   }
 
-  public IWinnerIfEqualStrategy GetIfEqualRule() { return new PlayerWinnerIfEqualScoreStrategy();
+  public IWinnerIfEqualStrategy GetIfEqualRule() { return new DealerWinnerIfEqualScoreStrategy();
   }
 
   public INewGameStrategy GetNewGameRule() {

@@ -16,7 +16,7 @@ public class Game {
     
   public boolean IsGameOver()
   {
-    return m_dealer.IsGameOver();
+      return m_dealer.IsGameOver();
   }
   
   public boolean IsDealerWinner()
