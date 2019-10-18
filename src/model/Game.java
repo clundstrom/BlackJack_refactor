@@ -1,8 +1,7 @@
 package model;
 
-import controller.GameEventController;
-import model.rules.Role;
 import model.rules.RulesFactory;
+import view.IView;
 
 public class Game {
 
@@ -14,7 +13,11 @@ public class Game {
     m_dealer = new Dealer(new RulesFactory());
     m_player = new Player();
   }
-    
+
+  public void addSubscriber(IView view){
+    m_player.subscribe(view);
+    m_dealer.subscribe(view);
+  }
     
   public boolean IsGameOver()
   {

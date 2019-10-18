@@ -1,7 +1,5 @@
 package view;
 
-import model.Player;
-
 public abstract class BaseView implements IView {
 
     protected char play = 'p';
@@ -49,5 +47,12 @@ public abstract class BaseView implements IView {
         return input == quit;
     }
 
+    public void wait(int ms){
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

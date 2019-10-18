@@ -5,7 +5,6 @@ import model.Game;
 
 public class PlayGame {
 
-
   public boolean Play(Game a_game, IView a_view) {
 
 

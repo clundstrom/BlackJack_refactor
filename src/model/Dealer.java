@@ -1,6 +1,5 @@
 package model;
 
-import controller.GameEventController;
 import model.rules.*;
 
 public class Dealer extends Player {
@@ -34,7 +33,7 @@ public class Dealer extends Player {
       c = m_deck.GetCard();
       c.Show(true);
       a_player.DealCard(c);
-      GameEventController.notifyCardDealt(Role.Player);
+      a_player.notifyCardDealt(Role.Player);
       return true;
     }
     return false;
@@ -48,7 +47,7 @@ public class Dealer extends Player {
         c = m_deck.GetCard();
         c.Show(true);
         this.DealCard(c);
-        GameEventController.notifyCardDealt(Role.Dealer);
+        this.notifyCardDealt(Role.Dealer);
       }
       return true;
     }

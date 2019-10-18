@@ -52,9 +52,11 @@ public class SimpleView extends BaseView {
     @Override
     public void onPlayerCardDealt(){
         System.out.println("Player received a card.");
+        wait(3000);
     }
     @Override
     public void onDealerCardDealt(){
         System.out.println("Croupiern received a card.");
+        wait(3000);
     }
 }
