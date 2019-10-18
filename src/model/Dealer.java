@@ -1,6 +1,10 @@
 package model;
 
 import model.rules.*;
+import view.IView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dealer extends Player {
 
@@ -8,12 +12,14 @@ public class Dealer extends Player {
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
   private IWinnerIfEqualStrategy m_ruleIfEqual;
+  private List<IView> mSubscribers;
 
   public Dealer(RulesFactory a_rulesFactory) {
   
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
     m_ruleIfEqual = a_rulesFactory.GetIfEqualRule();
+    mSubscribers = new ArrayList<>();
   }
   
   
@@ -33,7 +39,7 @@ public class Dealer extends Player {
       c = m_deck.GetCard();
       c.Show(true);
       a_player.DealCard(c);
-      a_player.notifyCardDealt(Role.Player);
+      a_player.notifyCardDealt();
       return true;
     }
     return false;
@@ -47,7 +53,7 @@ public class Dealer extends Player {
         c = m_deck.GetCard();
         c.Show(true);
         this.DealCard(c);
-        this.notifyCardDealt(Role.Dealer);
+        this.notifyCardDealt();
       }
       return true;
     }
@@ -63,5 +69,18 @@ public class Dealer extends Player {
         return true;
     }
     return false;
+  }
+
+  @Override
+  public void notifyCardDealt() {
+    for (IView view : mSubscribers) {
+      view.onDealerCardDealt();
+    }
+
+  }
+
+  @Override
+  public void subscribe(IView view) {
+    mSubscribers.add(view);
   }
 }

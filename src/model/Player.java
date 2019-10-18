@@ -23,6 +23,7 @@ public class Player {
 
     public void DealCard(Card a_addToHand) {
         m_hand.add(a_addToHand);
+        notifyCardDealt();
     }
 
     public Iterable<Card> GetHand() {
@@ -68,18 +69,10 @@ public class Player {
         mSubscribers.add(view);
     }
 
-    public void notifyCardDealt(Role role){
-        switch (role){
-            case Dealer:
-                for(IView view : mSubscribers){
-                    view.onDealerCardDealt();
-                }
-                break;
-            case Player:
-                for(IView view : mSubscribers){
-                    view.onPlayerCardDealt();
-                }
-                break;
+    public void notifyCardDealt() {
+        for (IView view : mSubscribers) {
+            view.onPlayerCardDealt();
         }
+
     }
 }
