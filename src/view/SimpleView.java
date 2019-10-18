@@ -1,6 +1,7 @@
 package view;
 
 import model.Card;
+import model.Player;
 
 public class SimpleView extends BaseView {
 
@@ -46,5 +47,16 @@ public class SimpleView extends BaseView {
             System.out.println("You Won!");
         }
 
+    }
+
+    @Override
+    public void onPlayerCardDealt(){
+        System.out.println("Player received a card.");
+        wait(4000);
+    }
+    @Override
+    public void onDealerCardDealt(){
+        System.out.println("Croupiern received a card.");
+        wait(4000);
     }
 }

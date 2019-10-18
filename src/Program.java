@@ -11,7 +11,8 @@ public class Program
     Game g = new Game();
     IView v = new SwedishView(); //new SwedishView();
     PlayGame ctrl = new PlayGame();
-    
+    g.addSubscriber(v);
+
     while (ctrl.Play(g, v));
   }
 }

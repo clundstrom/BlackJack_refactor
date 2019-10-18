@@ -1,6 +1,7 @@
 package model;
 
 import model.rules.RulesFactory;
+import view.IView;
 
 public class Game {
 
@@ -12,11 +13,18 @@ public class Game {
     m_dealer = new Dealer(new RulesFactory());
     m_player = new Player();
   }
+
+  public void addSubscriber(IView view){
+    m_player.subscribe(view);
+    m_dealer.subscribe(view);
+  }
     
-    
-  public boolean IsGameOver()
-  {
-    return m_dealer.IsGameOver();
+  public boolean IsGameOver() {
+    if(m_player.CalcScore() > m_player.g_maxScore){
+      m_dealer.SetGameOver();
+      return true;
+    } else
+      return m_dealer.IsGameOver();
   }
   
   public boolean IsDealerWinner()
@@ -31,16 +39,15 @@ public class Game {
   
   public boolean Hit()
   {
-    return m_dealer.Hit(m_player);
+    if (m_dealer.Hit(m_player)){
+      return true;
+    }
+    return false;
   }
-  
-  public boolean Stand()
-  {
-    // Dealer show hidden
 
 
-
-    return true;
+  public boolean Stand() {
+   return m_dealer.Stand();
   }
   
   public Iterable<Card> GetDealerHand()
@@ -62,6 +69,5 @@ public class Game {
   {
     return m_player.CalcScore();
   }
-    
-  
+
 }

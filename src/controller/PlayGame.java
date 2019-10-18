@@ -6,8 +6,9 @@ import model.Game;
 public class PlayGame {
 
   public boolean Play(Game a_game, IView a_view) {
-    a_view.DisplayWelcomeMessage();
 
+
+    a_view.DisplayWelcomeMessage();
     a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
     a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
 
@@ -21,11 +22,13 @@ public class PlayGame {
 
     if (a_view.WantsToPlay(input))
     {
+        a_view.DisplayWelcomeMessage();
         a_game.NewGame();
     }
     else if (a_view.WantsAHit(input))
     {
         a_game.Hit();
+
     }
     else if (a_view.WantsToStand(input))
     {
