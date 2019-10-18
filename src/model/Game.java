@@ -19,8 +19,11 @@ public class Game {
     m_dealer.subscribe(view);
   }
     
-  public boolean IsGameOver()
-  {
+  public boolean IsGameOver() {
+    if(m_player.CalcScore() > m_player.g_maxScore){
+      m_dealer.SetGameOver();
+      return true;
+    } else
       return m_dealer.IsGameOver();
   }
   

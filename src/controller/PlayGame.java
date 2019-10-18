@@ -22,11 +22,13 @@ public class PlayGame {
 
     if (a_view.WantsToPlay(input))
     {
+        a_view.DisplayWelcomeMessage();
         a_game.NewGame();
     }
     else if (a_view.WantsAHit(input))
     {
         a_game.Hit();
+
     }
     else if (a_view.WantsToStand(input))
     {

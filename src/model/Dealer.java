@@ -11,6 +11,7 @@ public class Dealer extends Player {
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
   private IWinnerIfEqualStrategy m_ruleIfEqual;
+  private boolean isGameOver;
 
   public Dealer(RulesFactory a_rulesFactory) {
   
@@ -23,6 +24,7 @@ public class Dealer extends Player {
   
   public boolean NewGame(Player a_player) {
     if (m_deck == null || IsGameOver()) {
+      isGameOver = false;
       m_deck = new Deck();
       ClearHand();
       a_player.ClearHand();
@@ -62,7 +64,7 @@ public class Dealer extends Player {
   }
 
   public boolean IsGameOver() {
-    if (m_deck != null && m_hitRule.DoHit(this) != true) {
+    if ((m_deck != null && m_hitRule.DoHit(this) != true) || isGameOver) {
         return true;
     }
     return false;
@@ -72,7 +74,11 @@ public class Dealer extends Player {
   public void notifyCardDealt() {
     for (IView view : mSubscribers) {
       view.onDealerCardDealt();
-      view.DisplayDealerHand(this.m_hand, this.CalcScore()); //Spelaren har x
+      view.DisplayDealerHand(this.m_hand, this.CalcScore());
     }
+  }
+
+  public void SetGameOver() {
+    isGameOver = true;
   }
 }
