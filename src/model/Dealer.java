@@ -77,8 +77,7 @@ public class Dealer extends Player {
     isGameOver = true;
   }
   private Card getACard() {
-    Card c;
-    c = m_deck.GetCard();
+    Card c = m_deck.GetCard();
     c.Show(true);
     return c;
   }
