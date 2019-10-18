@@ -60,11 +60,11 @@ public class SwedishView extends BaseView {
     @Override
     public void onPlayerCardDealt(){
         System.out.println("Spelaren fick ett kort.");
-        wait(2000);
+        wait(4000);
     }
     @Override
     public void onDealerCardDealt(){
         System.out.println("Croupiern fick ett kort.");
-        wait(2000);
+        wait(4000);
     }
 }

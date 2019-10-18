@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class Player {
 
-    private List<Card> m_hand;
+    protected List<Card> m_hand;
     protected final int g_maxScore = 21;
     protected List<IView> mSubscribers;
 
@@ -71,6 +71,7 @@ public class Player {
     public void notifyCardDealt() {
         for (IView view : mSubscribers) {
             view.onPlayerCardDealt();
+            view.DisplayPlayerHand(m_hand, this.CalcScore());
         }
 
     }

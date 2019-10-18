@@ -4,7 +4,6 @@ import model.rules.*;
 import view.IView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Dealer extends Player {
 
@@ -73,6 +72,7 @@ public class Dealer extends Player {
   public void notifyCardDealt() {
     for (IView view : mSubscribers) {
       view.onDealerCardDealt();
+      view.DisplayDealerHand(this.m_hand, this.CalcScore()); //Spelaren har x
     }
   }
 }
