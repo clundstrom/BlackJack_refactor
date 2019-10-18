@@ -1,7 +1,6 @@
 package model;
 
 
-import model.rules.Role;
 import view.IView;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class Player {
 
     private List<Card> m_hand;
     protected final int g_maxScore = 21;
-    private List<IView> mSubscribers;
+    protected List<IView> mSubscribers;
 
 
     public Player() {

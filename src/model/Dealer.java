@@ -12,7 +12,6 @@ public class Dealer extends Player {
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
   private IWinnerIfEqualStrategy m_ruleIfEqual;
-  private List<IView> mSubscribers;
 
   public Dealer(RulesFactory a_rulesFactory) {
   
@@ -39,7 +38,6 @@ public class Dealer extends Player {
       c = m_deck.GetCard();
       c.Show(true);
       a_player.DealCard(c);
-      a_player.notifyCardDealt();
       return true;
     }
     return false;
@@ -76,11 +74,5 @@ public class Dealer extends Player {
     for (IView view : mSubscribers) {
       view.onDealerCardDealt();
     }
-
-  }
-
-  @Override
-  public void subscribe(IView view) {
-    mSubscribers.add(view);
   }
 }
