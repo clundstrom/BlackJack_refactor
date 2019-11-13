@@ -1,7 +1,6 @@
 package model;
 
 import model.rules.RulesFactory;
-import view.IView;
 
 public class Game {
 
@@ -14,9 +13,9 @@ public class Game {
     m_player = new Player();
   }
 
-  public void addSubscriber(IView view){
-    m_player.subscribe(view);
-    m_dealer.subscribe(view);
+  public void addSubscriber(PlayerObserver observer){
+    m_player.attach(observer);
+    m_dealer.attach(observer);
   }
     
   public boolean IsGameOver() {

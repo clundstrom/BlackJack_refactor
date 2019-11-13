@@ -1,6 +1,8 @@
 package view;
 
-public abstract class BaseView implements IView {
+import model.PlayerObserver;
+
+public abstract class BaseView implements IView, PlayerObserver {
 
     protected char play = 'p';
     protected char hit = 'h';

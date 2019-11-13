@@ -46,7 +46,7 @@ public class Dealer extends Player {
       ShowHand();
       while (m_hitRule.DoHit(this)) { // while strategy allows, deal card.
         this.DealCard(getACard());
-        this.notifyCardDealt();
+        this.notifyObservers();
       }
       return true;
     }
@@ -65,10 +65,9 @@ public class Dealer extends Player {
   }
 
   @Override
-  public void notifyCardDealt() {
-    for (IView view : mSubscribers) {
-      view.onDealerCardDealt();
-      view.DisplayDealerHand(this.m_hand, this.CalcScore());
+  public void notifyObservers() {
+    for (PlayerObserver observer : mSubscribers) {
+      observer.onDealerCardDealt(m_hand, this.CalcScore());
     }
   }
 

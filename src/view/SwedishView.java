@@ -58,12 +58,15 @@ public class SwedishView extends BaseView {
     }
 
     @Override
-    public void onPlayerCardDealt(){
+    public void onPlayerCardDealt(Iterable<Card> a_hand, int a_score){
+        DisplayHand("Player", a_hand, a_score);
         System.out.println("Spelaren fick ett kort.");
         wait(4000);
     }
+
     @Override
-    public void onDealerCardDealt(){
+    public void onDealerCardDealt(Iterable<Card> a_hand, int a_score){
+        DisplayHand("Dealer", a_hand, a_score);
         System.out.println("Croupiern fick ett kort.");
         wait(4000);
     }

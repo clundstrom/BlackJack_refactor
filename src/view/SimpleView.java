@@ -1,7 +1,6 @@
 package view;
 
 import model.Card;
-import model.Player;
 
 public class SimpleView extends BaseView {
 
@@ -50,12 +49,15 @@ public class SimpleView extends BaseView {
     }
 
     @Override
-    public void onPlayerCardDealt(){
+    public void onPlayerCardDealt(Iterable<Card> a_hand, int a_score){
+        DisplayHand("Player", a_hand, a_score);
         System.out.println("Player received a card.");
         wait(4000);
     }
+
     @Override
-    public void onDealerCardDealt(){
+    public void onDealerCardDealt(Iterable<Card> a_hand, int a_score){
+        DisplayHand("Dealer", a_hand, a_score);
         System.out.println("Croupiern received a card.");
         wait(4000);
     }

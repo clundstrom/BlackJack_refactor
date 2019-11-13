@@ -1,5 +1,6 @@
 import controller.PlayGame;
 import model.Game;
+import model.PlayerObserver;
 import view.*;
 
 public class Program
@@ -9,9 +10,9 @@ public class Program
   {
   
     Game g = new Game();
-    IView v = new SwedishView(); //new SwedishView();
+    IView v = new SimpleView(); //new SwedishView();
     PlayGame ctrl = new PlayGame();
-    g.addSubscriber(v);
+    g.addSubscriber((PlayerObserver)v);
 
     while (ctrl.Play(g, v));
   }
