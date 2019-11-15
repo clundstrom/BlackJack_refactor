@@ -1,8 +1,5 @@
 package model;
 
-
-import view.IView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
@@ -20,7 +17,8 @@ public class Player implements PlayerPublisher{
     }
 
 
-    public void DealCard(Card a_addToHand) {
+    public void DealCard(Card a_addToHand, boolean show) {
+        a_addToHand.Show(show);
         m_hand.add(a_addToHand);
         notifyObservers();
     }
