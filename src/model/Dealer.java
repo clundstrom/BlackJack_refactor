@@ -26,7 +26,7 @@ public class Dealer extends Player {
       m_deck = new Deck();
       ClearHand();
       a_player.ClearHand();
-      return m_newGameRule.NewGame(m_deck, this, a_player);   
+      return m_newGameRule.NewGame(m_deck, this, a_player);
     }
     return false;
   }
@@ -65,7 +65,7 @@ public class Dealer extends Player {
   @Override
   public void notifyObservers() {
     for (PlayerObserver observer : mSubscribers) {
-      observer.onDealerCardDealt(m_hand, this.CalcScore());
+      observer.onCardDealt(m_hand, this.CalcScore(), Role.Dealer);
     }
   }
 

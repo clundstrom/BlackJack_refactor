@@ -70,7 +70,7 @@ public class Player implements PlayerPublisher{
     @Override
     public void notifyObservers() {
         for (PlayerObserver observer : mSubscribers) {
-            observer.onPlayerCardDealt(m_hand, this.CalcScore());
+            observer.onCardDealt(m_hand, this.CalcScore(), Role.Player);
         }
     }
 }

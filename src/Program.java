@@ -10,7 +10,7 @@ public class Program
   {
   
     Game g = new Game();
-    IView v = new SimpleView(); //new SwedishView();
+    IView v = new SwedishView(); //new SwedishView();
     PlayGame ctrl = new PlayGame();
     g.addSubscriber((PlayerObserver)v);
 
