@@ -6,6 +6,7 @@ public interface IView
 {
   void DisplayWelcomeMessage();
   int GetInput();
+  void PromptInput();
   void DisplayCard(Card a_card);
   void DisplayPlayerHand(Iterable<Card> a_hand, int a_score);
   void DisplayDealerHand(Iterable<Card> a_hand, int a_score);

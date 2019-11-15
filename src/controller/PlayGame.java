@@ -17,24 +17,23 @@ public class PlayGame {
       a_view.DisplayGameOver(a_game.IsDealerWinner());
     }
 
-    int input = a_view.GetInput();
+    a_view.PromptInput();
 
-
-    if (a_view.WantsToPlay(input))
+    if (a_view.WantsToPlay(a_view.GetInput()))
     {
         a_view.DisplayWelcomeMessage();
         a_game.NewGame();
     }
-    else if (a_view.WantsAHit(input))
+    else if (a_view.WantsAHit(a_view.GetInput()))
     {
         a_game.Hit();
 
     }
-    else if (a_view.WantsToStand(input))
+    else if (a_view.WantsToStand(a_view.GetInput()))
     {
         a_game.Stand();
     }
 
-    return !a_view.WantsToQuit(input);
+    return !a_view.WantsToQuit(a_view.GetInput());
   }
 }
