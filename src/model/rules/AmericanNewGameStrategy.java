@@ -3,7 +3,6 @@ package model.rules;
 import model.Deck;
 import model.Dealer;
 import model.Player;
-import model.Card;
 
 class AmericanNewGameStrategy implements INewGameStrategy {
 

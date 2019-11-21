@@ -1,6 +1,7 @@
 package model;
 
 import model.rules.*;
+
 import java.util.ArrayList;
 
 public class Dealer extends Player {
