@@ -1,11 +1,11 @@
 package view;
 
 import model.Card;
-import model.Player;
+import model.Role;
 
 public class SimpleView extends BaseView {
 
-    public SimpleView(){
+    public SimpleView() {
         play = 'p';
         hit = 'h';
         stand = 's';
@@ -50,13 +50,12 @@ public class SimpleView extends BaseView {
     }
 
     @Override
-    public void onPlayerCardDealt(){
-        System.out.println("Player received a card.");
+    public void onCardDealt(Iterable<Card> a_hand, int a_score, Role role) {
+        String print = (role == Role.Dealer) ? "Dealer received a card." : "Player received a card.";
+
+        System.out.println(print);
         wait(4000);
+        DisplayHand(role.name(), a_hand, a_score);
     }
-    @Override
-    public void onDealerCardDealt(){
-        System.out.println("Croupiern received a card.");
-        wait(4000);
-    }
+
 }

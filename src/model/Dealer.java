@@ -1,7 +1,6 @@
 package model;
 
 import model.rules.*;
-import view.IView;
 
 import java.util.ArrayList;
 
@@ -28,14 +27,14 @@ public class Dealer extends Player {
       m_deck = new Deck();
       ClearHand();
       a_player.ClearHand();
-      return m_newGameRule.NewGame(m_deck, this, a_player);   
+      return m_newGameRule.NewGame(m_deck, this, a_player);
     }
     return false;
   }
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      a_player.DealCard(getACard());
+      a_player.DealCard(getACard(), true);
       return true;
     }
     return false;
@@ -45,8 +44,8 @@ public class Dealer extends Player {
     if(m_deck != null) {
       ShowHand();
       while (m_hitRule.DoHit(this)) { // while strategy allows, deal card.
-        this.DealCard(getACard());
-        this.notifyCardDealt();
+        this.DealCard(getACard(), true);
+        this.notifyObservers();
       }
       return true;
     }
@@ -65,10 +64,9 @@ public class Dealer extends Player {
   }
 
   @Override
-  public void notifyCardDealt() {
-    for (IView view : mSubscribers) {
-      view.onDealerCardDealt();
-      view.DisplayDealerHand(this.m_hand, this.CalcScore());
+  public void notifyObservers() {
+    for (PlayerObserver observer : mSubscribers) {
+      observer.onCardDealt(m_hand, this.CalcScore(), Role.Dealer);
     }
   }
 

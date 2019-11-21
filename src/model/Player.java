@@ -1,17 +1,14 @@
 package model;
 
-
-import view.IView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 
-public class Player {
+public class Player implements PlayerPublisher{
 
     protected List<Card> m_hand;
     protected final int g_maxScore = 21;
-    protected List<IView> mSubscribers;
+    protected List<PlayerObserver> mSubscribers;
 
 
     public Player() {
@@ -20,9 +17,10 @@ public class Player {
     }
 
 
-    public void DealCard(Card a_addToHand) {
+    public void DealCard(Card a_addToHand, boolean show) {
+        a_addToHand.Show(show);
         m_hand.add(a_addToHand);
-        notifyCardDealt();
+        notifyObservers();
     }
 
     public Iterable<Card> GetHand() {
@@ -64,15 +62,15 @@ public class Player {
         return score;
     }
 
-    public void subscribe(IView view) {
-        mSubscribers.add(view);
+    @Override
+    public void attach(PlayerObserver observer) {
+        mSubscribers.add(observer);
     }
 
-    public void notifyCardDealt() {
-        for (IView view : mSubscribers) {
-            view.onPlayerCardDealt();
-            view.DisplayPlayerHand(m_hand, this.CalcScore());
+    @Override
+    public void notifyObservers() {
+        for (PlayerObserver observer : mSubscribers) {
+            observer.onCardDealt(m_hand, this.CalcScore(), Role.Player);
         }
-
     }
 }

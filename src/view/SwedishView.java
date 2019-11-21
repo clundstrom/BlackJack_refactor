@@ -1,7 +1,7 @@
 package view;
 
 import model.Card;
-import model.Player;
+import model.Role;
 
 public class SwedishView extends BaseView {
 
@@ -53,18 +53,15 @@ public class SwedishView extends BaseView {
         for (Card c : a_hand) {
             DisplayCard(c);
         }
-        System.out.println("Poäng: " + a_score);
-        System.out.println("");
+        System.out.println("Poäng: " + a_score + "\n");
     }
 
     @Override
-    public void onPlayerCardDealt(){
-        System.out.println("Spelaren fick ett kort.");
+    public void onCardDealt(Iterable<Card> a_hand, int a_score, Role role) {
+        String print = (role == Role.Dealer) ? "Croupiern fick ett kort." : "Spelaren fick ett kort.";
+        String localeRole = (role == Role.Dealer) ? "Croupier" : "Spelare";
+        System.out.println(print);
         wait(4000);
-    }
-    @Override
-    public void onDealerCardDealt(){
-        System.out.println("Croupiern fick ett kort.");
-        wait(4000);
+        DisplayHand(localeRole, a_hand, a_score);
     }
 }
